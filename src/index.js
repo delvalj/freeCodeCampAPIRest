@@ -15,6 +15,4 @@ app.listen(PORT, () => {
 });
 
 
-// Seguir desde aca 
-// Inside the method createNewWorkout in our workout controller, we can extract the body from the request object, 
-// do some validation, and pass it as an argument to our workout service.
+// Respond with standard HTTP Error Codes
