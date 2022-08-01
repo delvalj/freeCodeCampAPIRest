@@ -1,4 +1,3 @@
-// In src/index.js 
 const express = require("express"); 
 
 const bodyParser = require("body-parser");
@@ -15,6 +14,9 @@ app.listen(PORT, () => {
 });
 
 
-// Seguir desde aca 
-// Inside the method createNewWorkout in our workout controller, we can extract the body from the request object, 
-// do some validation, and pass it as an argument to our workout service.
+// Chances are high that have we to implement CRUD endpoints for the records as well, because records should be added, 
+// updated or deleted in the future as well. But this won't be the primary task for now.
+// We'll also need a record router to catch the specific requests for the records, but we don't need it right now. 
+// This could be a great chance for you to implement the CRUD operations for the records with their own routes and train a bit.
+
+// Of course, this only works if we can handle requests to "/members/:memberId"
