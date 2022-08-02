@@ -1,9 +1,13 @@
 // In src/controllers/workoutController.js
 const workoutService = require("../services/workoutService");
 
+// We're extracting "mode" from the req.query object and defining a parameter of workoutService.getAllWorkouts. 
+//This will be an object that consists of our filter parameters.
+
 const getAllWorkouts = (req, res) => {
+  const { mode } = req.query;
   try {
-    const allWorkouts = workoutService.getAllWorkouts();
+    const allWorkouts = workoutService.getAllWorkouts({ mode });
     res.send({ status: "OK", data: allWorkouts });
   } catch (error) {
     res

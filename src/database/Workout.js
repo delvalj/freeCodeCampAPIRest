@@ -1,9 +1,24 @@
 const DB = require("./db.json");
 const { saveToDatabase } = require("./utils");
 
-const getAllWorkouts = () => {
+// All we do here is check if we actually have a truthy value for the key "mode" inside our "filterParams". 
+// If this is true, we filter all those workouts that have got the same "mode". If this is not true, then there is no query
+//  parameter called "mode" and we return all workouts because we don't need to filter.
+
+// http://localhost:3000/api/v1/workouts?mode=amrap
+
+// When typing in a value that is not stored, that you should receive an empty array.
+
+const getAllWorkouts = (filterParams) => {
   try {
-    return DB.workouts;
+    let workouts = DB.workouts;
+    if (filterParams.mode) {
+      return DB.workouts.filter((workout) =>
+        workout.mode.toLowerCase().includes(filterParams.mode)
+      );
+    }
+    // Other if-statements will go here for different parameters
+    return workouts;
   } catch (error) {
     throw { status: 500, message: error };
   }
